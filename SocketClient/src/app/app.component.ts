@@ -15,11 +15,11 @@ const httpOptions = {
 })
 export class AppComponent implements OnInit {
 
-  users;
-  currentUser;
+  users: any;
+  currentUser: any;
   isEdit : boolean = false;
-  cmsUrl;
-  currentUserName;
+  cmsUrl: string;
+  currentUserName: string;
 
   constructor (private http: HttpClient, private sails: SailsClient) {
 
@@ -48,6 +48,8 @@ export class AppComponent implements OnInit {
      * On real time model events of User model
      */
     this.sails.on('user').subscribe((res:any) => {
+
+      console.log(JSON.stringify(res, null, 2));
 
       /**
        * If new record is created to User model
